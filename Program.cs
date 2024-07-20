@@ -1,21 +1,36 @@
-﻿Console.WriteLine("Welcome to Guessing Game!");
+﻿using System.Globalization;
+
+Console.WriteLine("Welcome to Guessing Game!");
 Console.WriteLine("Guess a number (1 - 100)");
-string userGuessInput = Console.ReadLine();
 
 int secretNumber = 42;
-if (int.TryParse(userGuessInput, out int guessInput) && guessInput > 0 && guessInput <= 100)
+int maxGuess = 4;
+for (int i = 0; i < maxGuess; i++)
 {
-    Console.WriteLine($"Checking answer...");
-    if (guessInput == 42)
+    string userGuessInput = Console.ReadLine();
+    if (int.TryParse(userGuessInput, out int guessInput) && guessInput > 0 && guessInput <= 100)
     {
-        Console.WriteLine("Congrats you guessed correctly!");
+        Console.WriteLine($"Checking answer...");
+        if (guessInput == secretNumber)
+        {
+            Console.WriteLine("Congrats you guessed correctly!");
+            break;
+        }
+        else
+        {
+            if (i < maxGuess - 1)
+            {
+                Console.WriteLine($"That answer is incorrect! Try again.");
+            }
+            else
+            {
+                Console.WriteLine("You have used all your guesses. Thank you for playing!");
+            };
+        }
     }
     else
     {
-        Console.WriteLine("That answer is incorrect");
+        Console.WriteLine("Please guess a number between 1 and 100. Invalid Input");
+        
     }
-}
-else
-{
-    Console.WriteLine("Please guess a number between 1 and 100. Invalid Input");
-}
+    }
