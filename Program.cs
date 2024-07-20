@@ -3,9 +3,9 @@
 Console.WriteLine("Welcome to Guessing Game!");
 Console.WriteLine("Guess a number (1 - 100)");
 
-int secretNumber = 42;
+Random random = new Random();
+int secretNumber = random.Next(1, 100);
 int maxGuess = 4;
-int numOfGuess = 0;
 for (int i = 0; i < maxGuess; i++)
 {
     string userGuessInput = Console.ReadLine();
@@ -21,9 +21,7 @@ for (int i = 0; i < maxGuess; i++)
         {
             if (i < maxGuess - 1)
             {
-                numOfGuess++;
-                Console.WriteLine($"That answer is incorrect!");
-                Console.WriteLine("NUmber of guesses you've made:" + numOfGuess);
+                Console.WriteLine($"That answer is incorrect! You have {maxGuess - (i + 1)} guesses remaining");
             }
             else
             {
