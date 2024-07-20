@@ -5,6 +5,7 @@ Console.WriteLine("Guess a number (1 - 100)");
 
 int secretNumber = 42;
 int maxGuess = 4;
+int numOfGuess = 0;
 for (int i = 0; i < maxGuess; i++)
 {
     string userGuessInput = Console.ReadLine();
@@ -20,7 +21,9 @@ for (int i = 0; i < maxGuess; i++)
         {
             if (i < maxGuess - 1)
             {
-                Console.WriteLine($"That answer is incorrect! Try again.");
+                numOfGuess++;
+                Console.WriteLine($"That answer is incorrect!");
+                Console.WriteLine("NUmber of guesses you've made:" + numOfGuess);
             }
             else
             {
